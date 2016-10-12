@@ -11,6 +11,19 @@
     <%= image_tag("logo.png") %>
     <%= @page_title || "Pragmatic Bookshelf" %>
   </div>
-  <%= yield %>
+  <div id="columns">
+    <div id="side">
+      <ul>
+	<li><a href="http://www....">Home</a></li>
+	<li><a href="http://www..../faq">Questions</a></li>
+	<li><a href="http://www..../news">News</a></li>
+	<li><a href="http://www..../contact">Contact</a></li>
+        <li><%= DateTime.now.strftime "%d/%m/%Y %H:%M" %></li>
+      </ul>
+    </div>
+  <div id="main">
+    <%= yield %>
+  </div>
+</div>
 <% end %>
 </html>

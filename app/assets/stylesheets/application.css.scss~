@@ -61,6 +61,9 @@
           color: #bfb;
 	  font-size: small;
 	}
+        d{
+          color: #7FFFD4
+        }
       }
     }
   }
