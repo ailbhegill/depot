@@ -6,29 +6,31 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-	<%= content_tag :body, class: controller.controller_name do %>
-		<div id="banner">
-		  <%= image_tag("logo.png") %>
-		  <%= @page_title || "Pragmatic Bookshelf" %>
-		</div>
-		<div id="columns">
-		  <div id="side">
-				<ul>
-					<li><a href="http://www....">Home</a></li>
-					<li><a href="http://www..../faq">Questions</a></li>
-					<li><a href="http://www..../news">News</a></li>
-					<li><a href="http://www..../contact">Contact</a></li>
-					<li><d><%= DateTime.now.strftime "%d/%m/%Y %H:%M" %></d></li>
-				</ul>
-				<% if @cart %>
-					<div id="cart">
-		  			<%= render @cart %>
-					</div>
-				<% end %>
-			</div>
-			<div id="main">
-				<%= yield %>
-			</div>
-		</div>
-	<% end %>
+  <%= content_tag :body, class: controller.controller_name do %>
+    <div id="banner">
+      <%= image_tag("logo.png") %>
+      <%= @page_title || "Pragmatic Bookshelf" %>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <ul>
+          <li><a href="http://www....">Home</a></li>
+          <li><a href="http://www..../faq">Questions</a></li>
+          <li><a href="http://www..../news">News</a></li>
+          <li><a href="http://www..../contact">Contact</a></li>
+          <li><d><%= DateTime.now.strftime "%d/%m/%Y %H:%M" %></d></li>
+        </ul>
+        <% if @cart %>
+				<div id="cart">
+					<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+  					<%= render @cart %>
+					<% end %>
+          </div>
+        <% end %>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
+  <% end %>
 </html>
