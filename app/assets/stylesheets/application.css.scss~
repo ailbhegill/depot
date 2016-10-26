@@ -62,7 +62,7 @@
 	  font-size: small;
 	}
         d{
-          color: #7FFFD4
+          color: #98FF98
         }
       }
     }
